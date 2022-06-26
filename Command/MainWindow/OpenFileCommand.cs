@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TreatisesManager.Model;
+using TreatisesManager.View;
 
 namespace TreatisesManager.Command.MainWindow
 {
@@ -29,6 +30,7 @@ namespace TreatisesManager.Command.MainWindow
 			var dialog = new OpenFileDialog();
 			var treatise = new Treatise()
 			{
+				Id = treatises.Max(t => t.Id) + 1,
 				Title = "",
 				Authors = "",
 			};
@@ -36,6 +38,23 @@ namespace TreatisesManager.Command.MainWindow
 			if (dialog.ShowDialog() == true)
 			{
 				treatise.FilePath = dialog.FileName;
+			}
+
+			if (string.IsNullOrEmpty(treatise.FilePath))
+			{
+				return;
+			}
+
+			var formWindow = new TreatiseForm(treatise);
+			formWindow.ShowDialog();
+
+			try
+			{
+				Database.Insert(treatise);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show($"Failed to save into database: {e.Message}");
 			}
 
 			treatises.Add(treatise);

@@ -61,5 +61,36 @@ namespace TreatisesManager.Model
                 }
             }
         }
+
+        public static void Insert(Treatise treatise)
+		{
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    // データベースの接続開始
+                    connection.Open();
+
+                    // SQLの準備
+                    command.CommandText = @"INSERT INTO Treatise (Id, Title, Author, Path) VALUES (@Id, @Title, @Author, @Path)";
+                    command.Parameters.Add(new SqlParameter("@Id", treatise.Id));
+                    command.Parameters.Add(new SqlParameter("@Title", treatise.Title));
+                    command.Parameters.Add(new SqlParameter("@Author", treatise.Authors));
+                    command.Parameters.Add(new SqlParameter("@Path", treatise.FilePath));
+
+                    // SQLの実行
+                    command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
 	}
 }
