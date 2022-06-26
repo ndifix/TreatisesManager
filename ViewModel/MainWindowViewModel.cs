@@ -14,11 +14,14 @@ namespace TreatisesManager.ViewModel
 	{
 		public ObservableCollection<Treatise> Treatises { get; }
 
+		public ICommand LoadedCommand { get; }
+
 		public ICommand OpenFileCommand { get; }
 
 		public MainWindowViewModel()
 		{
 			Treatises = new ObservableCollection<Treatise>();
+			LoadedCommand = new LoadedCommand(Treatises);
 			OpenFileCommand = new OpenFileCommand(Treatises);
 		}
 	}
