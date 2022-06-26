@@ -76,6 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\TreatiseForm\AppendAuthorComamnd.cs" />
     <Compile Include="ViewModel\TreatiseFormViewModel.cs" />
     <Compile Include="View\TreatiseForm.xaml.cs">
       <DependentUpon>TreatiseForm.xaml</DependentUpon>

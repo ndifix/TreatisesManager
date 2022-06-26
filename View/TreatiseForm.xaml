@@ -18,7 +18,10 @@
 
         <TextBlock VerticalAlignment="Top" Margin="80,10,10,0" Text="{Binding Path=Treatise.FilePath}" Height="20"/>
         <TextBox VerticalAlignment="Top" Margin="80,50,10,0" Text="{Binding Path=Treatise.Title}" Height="20"/>
-        <TextBox VerticalAlignment="Top" Margin="80,90,10,0" Text="{Binding Path=AuthorBuffer, UpdateSourceTrigger=PropertyChanged}" Height="20"/>
+        <TextBox VerticalAlignment="Top" Margin="80,90,70,0" Text="{Binding Path=AuthorBuffer, UpdateSourceTrigger=PropertyChanged}" Height="20"/>
+
+        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,90,10,0" Content="Append" Command="{Binding Path=AppendAuthorCommand}" Width="50"/>
+        <TextBlock VerticalAlignment="Top" Margin="80,120,70,0" Text="{Binding Path=AuthorList}"/>
 
     </Grid>
 </Window>

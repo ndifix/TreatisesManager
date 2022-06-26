@@ -45,7 +45,7 @@ namespace TreatisesManager.Command.MainWindow
 				return;
 			}
 
-			var formWindow = new TreatiseForm(treatise);
+			var formWindow = new View.TreatiseForm(treatise);
 			formWindow.ShowDialog();
 
 			try
