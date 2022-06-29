@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using TreatisesManager.Model;
+using TreatisesManager.ViewModel;
 
 namespace TreatisesManager.Command.MainWindow
 {
@@ -14,25 +15,18 @@ namespace TreatisesManager.Command.MainWindow
 	{
 		public event EventHandler CanExecuteChanged;
 
-		private readonly ObservableCollection<Treatise> treatises;
+		private readonly MainWindowViewModel viewModel;
 
-		public LoadedCommand(ObservableCollection<Treatise> treatises)
+		public LoadedCommand(MainWindowViewModel vm)
 		{
-			this.treatises = treatises;
+			viewModel = vm;
 		}
 
 		public bool CanExecute(object parameter) => true;
 
-		public void Execute(object parameter)
+		public async void Execute(object parameter)
 		{
-			try
-			{
-				Database.SelectAll(treatises);
-			}
-			catch(Exception e)
-			{
-				MessageBox.Show($"Failed to read database: {e.Message}");
-			}
+			await viewModel.TreatiseCache.GetTreatisesAsync(viewModel.Treatises);
 		}
 	}
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TreatisesManager.ViewModel;
 
 namespace TreatisesManager.View
 {
@@ -20,9 +21,17 @@ namespace TreatisesManager.View
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private readonly MainWindowViewModel viewModel = new MainWindowViewModel();
+
 		public MainWindow()
 		{
 			InitializeComponent();
+			DataContext = viewModel;
+		}
+
+		private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			viewModel.WindowClosing();
 		}
 	}
 }

@@ -30,7 +30,7 @@ namespace TreatisesManager.Command.MainWindow
 			var dialog = new OpenFileDialog();
 			var treatise = new Treatise()
 			{
-				Id = treatises.Max(t => t.Id) + 1,
+				Id = treatises.Select(t => t.Id).DefaultIfEmpty().Max() + 1,
 				Title = "",
 				Authors = "",
 			};
@@ -47,15 +47,6 @@ namespace TreatisesManager.Command.MainWindow
 
 			var formWindow = new View.TreatiseForm(treatise);
 			formWindow.ShowDialog();
-
-			try
-			{
-				Database.Insert(treatise);
-			}
-			catch (Exception e)
-			{
-				MessageBox.Show($"Failed to save into database: {e.Message}");
-			}
 
 			treatises.Add(treatise);
 		}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TreatisesManager.Command.MainWindow;
@@ -18,11 +19,24 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand OpenFileCommand { get; }
 
+		public TreatiseCache TreatiseCache { get; }
+
 		public MainWindowViewModel()
 		{
 			Treatises = new ObservableCollection<Treatise>();
-			LoadedCommand = new LoadedCommand(Treatises);
+			LoadedCommand = new LoadedCommand(this);
 			OpenFileCommand = new OpenFileCommand(Treatises);
+			TreatiseCache = new TreatiseCache();
+		}
+
+		public async void WindowClosing()
+		{
+			try
+			{
+				await TreatiseCache.SaveTreatisesAsync(Treatises);
+			}
+			catch
+			{ }
 		}
 	}
 }
