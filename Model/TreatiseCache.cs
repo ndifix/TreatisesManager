@@ -17,7 +17,7 @@ namespace TreatisesManager.Model
 {
 	internal class TreatiseCache
 	{
-		private readonly string filePath = @"treatises.cache";
+		private readonly string filePath = @"treatises.json.gz";
 
 		public async Task GetTreatisesAsync(ObservableCollection<Treatise> treatises)
 		{
@@ -29,21 +29,19 @@ namespace TreatisesManager.Model
 			}
 
 			using (var fs = File.OpenRead(filePath))
-			using (var sr = new StreamReader(fs))
+			using (var gzs = new GZipStream(fs, CompressionMode.Decompress))
 			{
 				try
 				{
-					string jsonText = await sr.ReadToEndAsync();
-
-					JsonSerializerOptions option = new JsonSerializerOptions()
+					using (var ms = new MemoryStream())
 					{
-						Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-					};
-
-					var treatisesBuf = JsonSerializer.Deserialize<ObservableCollection<Treatise>>(jsonText, option);
-					foreach (var treatise in treatisesBuf)
-					{
-						treatises.Add(treatise);
+						await gzs.CopyToAsync(ms);
+						string jsonText = Encoding.UTF8.GetString(ms.ToArray());
+						var treatisesBuf = JsonSerializer.Deserialize<ObservableCollection<Treatise>>(jsonText);
+						foreach (var treatise in treatisesBuf)
+						{
+							treatises.Add(treatise);
+						}
 					}
 				}
 				catch (TaskCanceledException)
@@ -58,12 +56,13 @@ namespace TreatisesManager.Model
 		public async Task SaveTreatisesAsync(ObservableCollection<Treatise> treatises)
 		{
 			using (var fs = File.OpenWrite(filePath))
-			using (var sw = new StreamWriter(fs))
+			using (var gzs = new GZipStream(fs, CompressionMode.Compress))
 			{
 				try
 				{
 					string text = JsonSerializer.Serialize(treatises);
-					await sw.WriteAsync(text);
+					byte[] jsonBytes = Encoding.UTF8.GetBytes(text);
+					await gzs.WriteAsync(jsonBytes, 0, jsonBytes.Length);
 				}
 				catch (TaskCanceledException)
 				{ }
