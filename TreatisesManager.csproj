@@ -95,6 +95,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\TreatiseForm\AppendAuthorComamnd.cs" />
+    <Compile Include="Command\TreatiseForm\ClosingWindowCommand.cs" />
     <Compile Include="Model\TreatiseCache.cs" />
     <Compile Include="ViewModel\TreatiseFormViewModel.cs" />
     <Compile Include="View\TreatiseForm.xaml.cs">

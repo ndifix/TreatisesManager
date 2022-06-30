@@ -26,7 +26,7 @@ namespace TreatisesManager.View
 		public TreatiseForm(Treatise treatise)
 		{
 			InitializeComponent();
-			ViewModel = new TreatiseFormViewModel(treatise);
+			ViewModel = new TreatiseFormViewModel(treatise, this);
 			DataContext = ViewModel;
 		}
 

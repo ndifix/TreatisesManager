@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TreatisesManager.Model;
 using TreatisesManager.Command.TreatiseForm;
+using TreatisesManager.View;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -36,11 +37,14 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand AppendAuthorCommand { get; }
 
-		public TreatiseFormViewModel(Treatise treatise)
+		public ICommand ClosingWindowCommand { get; }
+
+		public TreatiseFormViewModel(Treatise treatise, TreatiseForm form)
 		{
 			Treatise = treatise;
 			AuthorBuffer = string.Empty;
 			AppendAuthorCommand = new AppendAuthorCommand(this);
+			ClosingWindowCommand = new ClosingWindowCommand(form);
 		}
 
 		internal void ClosingWindow()
@@ -50,6 +54,7 @@ namespace TreatisesManager.ViewModel
 				Treatise.Authors.Add(AuthorBuffer.Trim());
 			}
 		}
+
 		protected void OnPropertyChanged([CallerMemberName] string name = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
