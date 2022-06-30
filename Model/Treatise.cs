@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TreatisesManager.Model
@@ -12,7 +13,10 @@ namespace TreatisesManager.Model
 
 		public string Title { get; set; }
 
-		public string Authors { get; set; }
+		public List<string> Authors { get; set; }
+
+		[JsonIgnore]
+		public string DisplayAuthorString => Authors.Aggregate("", (accum, name) => accum + name + "; ");
 
 		public string FilePath { get; set; }
 	}

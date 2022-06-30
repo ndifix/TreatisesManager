@@ -31,8 +31,10 @@ namespace TreatisesManager.Command.TreatiseForm
 			{
 				return;
 			}
-			viewModel.AuthorList += viewModel.AuthorBuffer.Trim() + "\n";
-			viewModel.Treatise.Authors += viewModel.AuthorBuffer.Trim() + ";";
+			viewModel.Treatise.Authors.Add(viewModel.AuthorBuffer.Trim());
+
+			// 変更反映のために代入で通知しなければならない
+			viewModel.AuthorList = "";
 			viewModel.AuthorBuffer = string.Empty;
 		}
 	}

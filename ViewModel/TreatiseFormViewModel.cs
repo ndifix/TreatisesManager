@@ -30,14 +30,9 @@ namespace TreatisesManager.ViewModel
 
 		public string AuthorList
 		{
-			get => authorListString;
-			set
-			{
-				authorListString = value;
-				OnPropertyChanged("AuthorList");
-			}
+			get => Treatise.Authors.Aggregate("", (accum, name) => accum + name + "\n");
+			set => OnPropertyChanged("AuthorList");
 		}
-		private string authorListString;
 
 		public ICommand AppendAuthorCommand { get; }
 
@@ -45,7 +40,6 @@ namespace TreatisesManager.ViewModel
 		{
 			Treatise = treatise;
 			AuthorBuffer = string.Empty;
-			AuthorList = string.Empty;
 			AppendAuthorCommand = new AppendAuthorCommand(this);
 		}
 
@@ -53,7 +47,7 @@ namespace TreatisesManager.ViewModel
 		{
 			if (!string.IsNullOrWhiteSpace(AuthorBuffer))
 			{
-				Treatise.Authors += AuthorBuffer.Trim() + ";";
+				Treatise.Authors.Add(AuthorBuffer.Trim());
 			}
 		}
 		protected void OnPropertyChanged([CallerMemberName] string name = null)

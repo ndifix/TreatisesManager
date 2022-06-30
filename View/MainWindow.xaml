@@ -27,7 +27,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=Title}"/>
-                    <GridViewColumn Header="Authors" DisplayMemberBinding="{Binding Path=Authors}"/>
+                    <GridViewColumn Header="Authors" DisplayMemberBinding="{Binding Path=DisplayAuthorString}"/>
                     <GridViewColumn Header="FilePath" DisplayMemberBinding="{Binding Path=FilePath}"/>
                 </GridView>
             </ListView.View>
