@@ -16,7 +16,12 @@ namespace TreatisesManager.ViewModel
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public Treatise Treatise { get; }
+		public Treatise Treatise
+		{
+			get => treatiseBuffer;
+			set => OnPropertyChanged("Treatise");
+		}
+		private readonly Treatise treatiseBuffer;
 
 		public string AuthorBuffer
 		{
@@ -39,12 +44,15 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand ClosingWindowCommand { get; }
 
+		public ICommand ChangeFilePathCommand { get; }
+
 		public TreatiseFormViewModel(Treatise treatise, TreatiseForm form)
 		{
-			Treatise = treatise;
+			treatiseBuffer = treatise;
 			AuthorBuffer = string.Empty;
 			AppendAuthorCommand = new AppendAuthorCommand(this);
 			ClosingWindowCommand = new ClosingWindowCommand(form);
+			ChangeFilePathCommand = new ChangeFilePathCommand(this);
 		}
 
 		internal void ClosingWindow()
