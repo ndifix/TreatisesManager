@@ -96,10 +96,12 @@
     </ApplicationDefinition>
     <Compile Include="Command\AuthorEditor\AppendAuthorCommand.cs" />
     <Compile Include="Command\AuthorEditor\RemoveAuthorCommand.cs" />
+    <Compile Include="Command\MainWindow\DeleteItemCommand.cs" />
     <Compile Include="Command\MainWindow\EditItemCommand.cs" />
     <Compile Include="Command\TreatiseForm\ChangeFilePathCommand.cs" />
     <Compile Include="Command\TreatiseForm\ClosingWindowCommand.cs" />
     <Compile Include="Command\TreatiseForm\EditAuthorsCommand.cs" />
+    <Compile Include="Model\ConfirmForm.cs" />
     <Compile Include="Model\TreatiseCache.cs" />
     <Compile Include="ViewModel\AuthorEditorViewModel.cs" />
     <Compile Include="ViewModel\TreatiseFormViewModel.cs" />

@@ -21,6 +21,8 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand EditItemCommand { get; }
 
+		public ICommand DeleteItemCommand { get; }
+
 		public TreatiseCache TreatiseCache { get; }
 
 		public MainWindowViewModel()
@@ -29,6 +31,7 @@ namespace TreatisesManager.ViewModel
 			LoadedCommand = new LoadedCommand(this);
 			OpenFileCommand = new OpenFileCommand(Treatises);
 			EditItemCommand = new EditItemCommand(Treatises);
+			DeleteItemCommand = new DeleteItemCommand(Treatises);
 			TreatiseCache = new TreatiseCache();
 		}
 
