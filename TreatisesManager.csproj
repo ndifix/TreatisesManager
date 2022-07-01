@@ -98,11 +98,20 @@
     <Compile Include="Command\TreatiseForm\AppendAuthorComamnd.cs" />
     <Compile Include="Command\TreatiseForm\ChangeFilePathCommand.cs" />
     <Compile Include="Command\TreatiseForm\ClosingWindowCommand.cs" />
+    <Compile Include="Command\TreatiseForm\EditAuthorsCommand.cs" />
     <Compile Include="Model\TreatiseCache.cs" />
+    <Compile Include="ViewModel\AuthorEditorViewModel.cs" />
     <Compile Include="ViewModel\TreatiseFormViewModel.cs" />
+    <Compile Include="View\AuthorEditor.xaml.cs">
+      <DependentUpon>AuthorEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TreatiseForm.xaml.cs">
       <DependentUpon>TreatiseForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AuthorEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

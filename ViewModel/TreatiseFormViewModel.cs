@@ -46,6 +46,8 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand ChangeFilePathCommand { get; }
 
+		public ICommand EditAuthorsCommand { get; }
+
 		public TreatiseFormViewModel(Treatise treatise, TreatiseForm form)
 		{
 			treatiseBuffer = treatise;
@@ -53,6 +55,7 @@ namespace TreatisesManager.ViewModel
 			AppendAuthorCommand = new AppendAuthorCommand(this);
 			ClosingWindowCommand = new ClosingWindowCommand(form);
 			ChangeFilePathCommand = new ChangeFilePathCommand(this);
+			EditAuthorsCommand = new EditAuthorsCommand(Treatise.Authors);
 		}
 
 		internal void ClosingWindow()
