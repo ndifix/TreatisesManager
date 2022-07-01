@@ -94,6 +94,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\AuthorEditor\AppendAuthorCommand.cs" />
     <Compile Include="Command\MainWindow\EditItemCommand.cs" />
     <Compile Include="Command\TreatiseForm\AppendAuthorComamnd.cs" />
     <Compile Include="Command\TreatiseForm\ChangeFilePathCommand.cs" />

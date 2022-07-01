@@ -17,17 +17,20 @@ namespace TreatisesManager.Command.TreatiseForm
 
 		public bool CanExecute(object parameter) => true;
 
-		private readonly List<string> authors;
+		private readonly TreatiseFormViewModel viewModel;
 
-		public EditAuthorsCommand(List<string> authors)
+		public EditAuthorsCommand(TreatiseFormViewModel vm)
 		{
-			this.authors = authors;
+			viewModel = vm;
 		}
 
 		public void Execute(object parameter)
 		{
-			Window editor = new AuthorEditor(authors);
+			Window editor = new View.AuthorEditor(viewModel.Treatise.Authors);
 			editor.ShowDialog();
+
+			// 通知のための代入
+			viewModel.AuthorList = null;
 		}
 	}
 }

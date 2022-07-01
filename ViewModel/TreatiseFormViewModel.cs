@@ -55,7 +55,7 @@ namespace TreatisesManager.ViewModel
 			AppendAuthorCommand = new AppendAuthorCommand(this);
 			ClosingWindowCommand = new ClosingWindowCommand(form);
 			ChangeFilePathCommand = new ChangeFilePathCommand(this);
-			EditAuthorsCommand = new EditAuthorsCommand(Treatise.Authors);
+			EditAuthorsCommand = new EditAuthorsCommand(this);
 		}
 
 		internal void ClosingWindow()

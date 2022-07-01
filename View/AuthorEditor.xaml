@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:TreatisesManager.View"
         mc:Ignorable="d"
         Title="AuthorEditor" MinHeight="200" MinWidth="300"
-        SizeToContent="WidthAndHeight">
+        SizeToContent="WidthAndHeight"
+        Closing="WindowClosing">
     <Grid>
-        <ListBox ItemsSource="{Binding Path=Items}" Margin="15,15,15,15">
+        <TextBox Text="{Binding Path=Author}" Height="20" VerticalAlignment="Top" Margin="15,10,70,0"/>
+        <Button Content="Append" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15,10,15,15" Command="{Binding Path=AppendAuthorCommand}"/>
+        <ListBox ItemsSource="{Binding Path=Items}" Margin="15,35,15,15">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox Content="{Binding Path=Name}" IsChecked="{Binding Path=Checked}"/>
