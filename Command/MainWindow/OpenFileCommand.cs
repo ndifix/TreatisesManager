@@ -44,6 +44,11 @@ namespace TreatisesManager.Command.MainWindow
 			{
 				return;
 			}
+			if (treatises.Any(t => t.FilePath == treatise.FilePath))
+			{
+				MessageBox.Show($"Failed to add the treatise. {treatise.FilePath} is already added.");
+				return;
+			}
 
 			var formWindow = new View.TreatiseForm(treatise);
 			formWindow.ShowDialog();
