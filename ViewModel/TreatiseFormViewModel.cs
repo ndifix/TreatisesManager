@@ -23,24 +23,11 @@ namespace TreatisesManager.ViewModel
 		}
 		private readonly Treatise treatiseBuffer;
 
-		public string AuthorBuffer
-		{
-			get => authorBufferString;
-			set
-			{
-				authorBufferString = value;
-				OnPropertyChanged("AuthorBuffer");
-			}
-		}
-		private string authorBufferString;
-
 		public string AuthorList
 		{
 			get => Treatise.Authors.Aggregate("", (accum, name) => accum + name + "\n");
 			set => OnPropertyChanged("AuthorList");
 		}
-
-		public ICommand AppendAuthorCommand { get; }
 
 		public ICommand ClosingWindowCommand { get; }
 
@@ -51,19 +38,9 @@ namespace TreatisesManager.ViewModel
 		public TreatiseFormViewModel(Treatise treatise, TreatiseForm form)
 		{
 			treatiseBuffer = treatise;
-			AuthorBuffer = string.Empty;
-			AppendAuthorCommand = new AppendAuthorCommand(this);
 			ClosingWindowCommand = new ClosingWindowCommand(form);
 			ChangeFilePathCommand = new ChangeFilePathCommand(this);
 			EditAuthorsCommand = new EditAuthorsCommand(this);
-		}
-
-		internal void ClosingWindow()
-		{
-			if (!string.IsNullOrWhiteSpace(AuthorBuffer))
-			{
-				Treatise.Authors.Add(AuthorBuffer.Trim());
-			}
 		}
 
 		protected void OnPropertyChanged([CallerMemberName] string name = null)

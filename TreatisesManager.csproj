@@ -96,7 +96,6 @@
     </ApplicationDefinition>
     <Compile Include="Command\AuthorEditor\AppendAuthorCommand.cs" />
     <Compile Include="Command\MainWindow\EditItemCommand.cs" />
-    <Compile Include="Command\TreatiseForm\AppendAuthorComamnd.cs" />
     <Compile Include="Command\TreatiseForm\ChangeFilePathCommand.cs" />
     <Compile Include="Command\TreatiseForm\ClosingWindowCommand.cs" />
     <Compile Include="Command\TreatiseForm\EditAuthorsCommand.cs" />

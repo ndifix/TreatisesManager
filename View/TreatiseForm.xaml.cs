@@ -29,10 +29,5 @@ namespace TreatisesManager.View
 			ViewModel = new TreatiseFormViewModel(treatise, this);
 			DataContext = ViewModel;
 		}
-
-		private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			ViewModel.ClosingWindow();
-		}
 	}
 }
