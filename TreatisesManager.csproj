@@ -95,6 +95,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\AuthorEditor\AppendAuthorCommand.cs" />
+    <Compile Include="Command\AuthorEditor\RemoveAuthorCommand.cs" />
     <Compile Include="Command\MainWindow\EditItemCommand.cs" />
     <Compile Include="Command\TreatiseForm\ChangeFilePathCommand.cs" />
     <Compile Include="Command\TreatiseForm\ClosingWindowCommand.cs" />

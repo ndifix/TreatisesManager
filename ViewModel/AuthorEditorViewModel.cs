@@ -32,6 +32,8 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand AppendAuthorCommand { get; }
 
+		public ICommand RemoveAuthorCommand { get; }
+
 		public AuthorEditorViewModel(List<string> authors)
 		{
 			authorBuffer = string.Empty;
@@ -40,6 +42,7 @@ namespace TreatisesManager.ViewModel
 				authors.Select(a => new Item() { Checked = false, Name = a })
 			);
 			AppendAuthorCommand = new AppendAuthorCommand(this);
+			RemoveAuthorCommand = new RemoveAuthorCommand(Items);
 		}
 
 		internal class Item
