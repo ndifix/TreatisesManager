@@ -15,6 +15,8 @@ namespace TreatisesManager.ViewModel
 	{
 		public ObservableCollection<Treatise> Treatises { get; }
 
+		public Treatise SelectedItem { get; set; }
+
 		public ICommand LoadedCommand { get; }
 
 		public ICommand AddFileCommand { get; }
