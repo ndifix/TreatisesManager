@@ -1,0 +1,56 @@
+﻿<Window x:Class="TreatisesManager.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreatisesManager.View"
+        xmlns:viewModel="clr-namespace:TreatisesManager.ViewModel"
+        xmlns:model="clr-namespace:TreatisesManager.Model"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Title="TreatisesManager" Height="450" Width="800"
+        Closing="WindowClosing">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <DockPanel VerticalAlignment="Top" LastChildFill="False" Height="30" Background="#FFF0F0F0">
+            <Menu DockPanel.Dock="Top" Height="20">
+                <MenuItem Header="File">
+                    <MenuItem Header="Open" Command="{Binding Path=AddFileCommand}"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <ListView ItemsSource="{Binding Path=Treatises}" VerticalAlignment="Top" Margin="0,30,0,0" SelectedItem="{Binding Path=SelectedItem}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=Title}"/>
+                    <GridViewColumn Header="Authors" DisplayMemberBinding="{Binding Path=DisplayAuthorString}"/>
+                    <GridViewColumn Header="FilePath" DisplayMemberBinding="{Binding Path=FilePath}"/>
+                </GridView>
+            </ListView.View>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Tag" Value="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+                                <MenuItem Header="Open" Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                                <MenuItem Header="Edit" Command="{Binding Path=EditItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                                <MenuItem Header="Delete" Command="{Binding Path=DeleteItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+    </Grid>
+</Window>

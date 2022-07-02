@@ -1,0 +1,24 @@
+﻿<Window x:Class="TreatisesManager.View.AuthorEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreatisesManager.View"
+        mc:Ignorable="d"
+        Title="AuthorEditor" MinHeight="200" MinWidth="300"
+        SizeToContent="WidthAndHeight"
+        Closing="WindowClosing">
+    <Grid>
+        <TextBox Text="{Binding Path=Author}" Height="20" VerticalAlignment="Top" Margin="15,10,70,0"/>
+        <Button Content="Append" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15,10,15,15" Command="{Binding Path=AppendAuthorCommand}"/>
+        <ListBox ItemsSource="{Binding Path=Items}" Margin="15,35,15,40">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding Path=Name}" IsChecked="{Binding Path=Checked}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Remove" Width="50" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="15,0,0,15" Command="{Binding Path=RemoveAuthorCommand}"/>
+
+    </Grid>
+</Window>
