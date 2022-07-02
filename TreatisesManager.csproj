@@ -98,6 +98,7 @@
     <Compile Include="Command\AuthorEditor\RemoveAuthorCommand.cs" />
     <Compile Include="Command\MainWindow\DeleteItemCommand.cs" />
     <Compile Include="Command\MainWindow\EditItemCommand.cs" />
+    <Compile Include="Command\MainWindow\OpenFileCommand.cs" />
     <Compile Include="Command\TreatiseForm\ChangeFilePathCommand.cs" />
     <Compile Include="Command\TreatiseForm\ClosingWindowCommand.cs" />
     <Compile Include="Command\TreatiseForm\EditAuthorsCommand.cs" />
