@@ -42,9 +42,9 @@
                     <Setter Property="ContextMenu">
                         <Setter.Value>
                             <ContextMenu DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
-                                <MenuItem Header="Open" Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding PlacementTarget.Content, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
-                                <MenuItem Header="Edit" Command="{Binding Path=EditItemCommand}" CommandParameter="{Binding PlacementTarget.Content, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
-                                <MenuItem Header="Delete" Command="{Binding Path=DeleteItemCommand}" CommandParameter="{Binding PlacementTarget.Content, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                                <MenuItem Header="Open" Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                                <MenuItem Header="Edit" Command="{Binding Path=EditItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                                <MenuItem Header="Delete" Command="{Binding Path=DeleteItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
                             </ContextMenu>
                         </Setter.Value>
                     </Setter>
