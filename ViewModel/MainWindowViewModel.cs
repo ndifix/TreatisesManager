@@ -17,7 +17,7 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand LoadedCommand { get; }
 
-		public ICommand OpenFileCommand { get; }
+		public ICommand AddFileCommand { get; }
 
 		public ICommand EditItemCommand { get; }
 
@@ -29,7 +29,7 @@ namespace TreatisesManager.ViewModel
 		{
 			Treatises = new ObservableCollection<Treatise>();
 			LoadedCommand = new LoadedCommand(this);
-			OpenFileCommand = new OpenFileCommand(Treatises);
+			AddFileCommand = new AddFileCommand(Treatises);
 			EditItemCommand = new EditItemCommand(Treatises);
 			DeleteItemCommand = new DeleteItemCommand(Treatises);
 			TreatiseCache = new TreatiseCache();

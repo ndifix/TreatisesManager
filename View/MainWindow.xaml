@@ -19,7 +19,7 @@
         <DockPanel VerticalAlignment="Top" LastChildFill="False" Height="30" Background="#FFF0F0F0">
             <Menu DockPanel.Dock="Top" Height="20">
                 <MenuItem Header="File">
-                    <MenuItem Header="Open" Command="{Binding Path=OpenFileCommand}"/>
+                    <MenuItem Header="Open" Command="{Binding Path=AddFileCommand}"/>
                 </MenuItem>
             </Menu>
         </DockPanel>

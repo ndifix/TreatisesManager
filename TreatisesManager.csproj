@@ -124,7 +124,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Command\MainWindow\LoadedCommand.cs" />
-    <Compile Include="Command\MainWindow\OpenFileCommand.cs" />
+    <Compile Include="Command\MainWindow\AddFileCommand.cs" />
     <Compile Include="Model\Treatise.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">

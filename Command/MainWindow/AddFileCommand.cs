@@ -12,13 +12,13 @@ using TreatisesManager.View;
 
 namespace TreatisesManager.Command.MainWindow
 {
-	class OpenFileCommand : ICommand
+	class AddFileCommand : ICommand
 	{
 		public event EventHandler CanExecuteChanged;
 
 		private readonly ObservableCollection<Treatise> treatises;
 
-		public OpenFileCommand(ObservableCollection<Treatise> treatises)
+		public AddFileCommand(ObservableCollection<Treatise> treatises)
 		{
 			this.treatises = treatises;
 		}
