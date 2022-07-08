@@ -19,5 +19,10 @@ namespace TreatisesManager.Model
 		public string DisplayAuthorString => Authors.Aggregate("", (accum, name) => accum + name + "; ");
 
 		public string FilePath { get; set; }
+
+		public List<string> Tags { get; set; }
+
+		[JsonIgnore]
+		public string DisplayTagString => Tags.Aggregate("", (accum, tag) => accum + tag + "; ");
 	}
 }

@@ -33,6 +33,7 @@ namespace TreatisesManager.Command.MainWindow
 				Id = treatises.Select(t => t.Id).DefaultIfEmpty().Max() + 1,
 				Title = "",
 				Authors = new List<string>(),
+				Tags = new List<string>(),
 			};
 
 			if (dialog.ShowDialog() == true)
