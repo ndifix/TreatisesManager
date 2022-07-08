@@ -10,19 +10,25 @@
         mc:Ignorable="d"
         Title="TreatiseForm" MinHeight="200" Width="300"
         SizeToContent="Height">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Text="FilePath:"  Height="20" Width="50"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" Text="Title:" Height="20" Width="50"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" Text="Authors:"  Height="20" Width="50"/>
 
-        <TextBlock VerticalAlignment="Top" Margin="80,10,70,0" Text="{Binding Path=Treatise.FilePath}" Height="20"/>
-        <TextBox VerticalAlignment="Top" Margin="80,50,10,0" Text="{Binding Path=Treatise.Title}" Height="20"/>
+    <DockPanel Margin="10,10,10,10">
+        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Right" Width="50" Content="Done" Command="{Binding ClosingWindowCommand}"/>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0" Content="Edit" Command="{Binding Path=ChangeFilePathCommand}" Width="50"/>
-        <Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,90,10,0" Content="Edit" Command="{Binding Path=EditAuthorsCommand}" Width="50"/>
-        <TextBlock VerticalAlignment="Top" Margin="80,90,70,0" Text="{Binding Path=AuthorList}"/>
-
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Content="Done" Command="{Binding ClosingWindowCommand}" Width="50"/>
-
-    </Grid>
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+            <DockPanel LastChildFill="True" Margin="0,0,0,20" Height="20">
+                <TextBlock DockPanel.Dock="Left" Width="50" Text="FilePath:"/>
+                <Button DockPanel.Dock="Right" Width="50" Content="Edit" Command="{Binding Path=ChangeFilePathCommand}"/>
+                <TextBlock DockPanel.Dock="Left" Margin="20,0,10,0" Text="{Binding Path=Treatise.FilePath}"/>
+            </DockPanel>
+            <DockPanel LastChildFill="True" Margin="0,0,0,20" Height="20">
+                <TextBlock DockPanel.Dock="Left" Width="50" Text="Title:"/>
+                <TextBox DockPanel.Dock="Right" Margin="20,0,0,0" Text="{Binding Path=Treatise.Title}"/>
+            </DockPanel>
+            <DockPanel LastChildFill="True" Margin="0,0,0,20" MinHeight="20">
+                <TextBlock DockPanel.Dock="Left" VerticalAlignment="Top" Height="20" Width="50" Text="Authors:"/>
+                <Button DockPanel.Dock="Right" VerticalAlignment="Top" Height="20" Width="50" Content="Edit" Command="{Binding Path=EditAuthorsCommand}"/>
+                <TextBlock DockPanel.Dock="Left" Margin="20,0,10,0" Text="{Binding Path=AuthorList}"/>
+            </DockPanel>
+        </StackPanel>
+    </DockPanel>
 </Window>
