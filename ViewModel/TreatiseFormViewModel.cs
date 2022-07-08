@@ -29,6 +29,12 @@ namespace TreatisesManager.ViewModel
 			set => OnPropertyChanged("AuthorList");
 		}
 
+		public string TagList
+		{
+			get => Treatise.Tags.Aggregate("", (accum, tag) => accum + tag + "\n");
+			set => OnPropertyChanged("TagList");
+		}
+
 		public ICommand ClosingWindowCommand { get; }
 
 		public ICommand ChangeFilePathCommand { get; }
