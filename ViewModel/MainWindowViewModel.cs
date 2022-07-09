@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,11 +13,19 @@ using TreatisesManager.Model;
 
 namespace TreatisesManager.ViewModel
 {
-	class MainWindowViewModel
+	class MainWindowViewModel : INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		public ObservableCollection<Treatise> Treatises { get; }
 
 		public Treatise SelectedItem { get; set; }
+
+		public IEnumerable<string> AllTags
+		{
+			get => Treatises.SelectMany(t => t.Tags).Distinct();
+			set => OnPropertyChanged("AllTags");
+		}
 
 		public ICommand LoadedCommand { get; }
 
@@ -48,6 +58,11 @@ namespace TreatisesManager.ViewModel
 			}
 			catch
 			{ }
+		}
+
+		protected void OnPropertyChanged([CallerMemberName] string name = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 		}
 	}
 }

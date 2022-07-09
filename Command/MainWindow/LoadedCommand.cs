@@ -27,6 +27,9 @@ namespace TreatisesManager.Command.MainWindow
 		public async void Execute(object parameter)
 		{
 			await viewModel.TreatiseCache.GetTreatisesAsync(viewModel.Treatises);
+
+			// 通知のための代入
+			viewModel.AllTags = null;
 		}
 	}
 }

@@ -16,42 +16,51 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <DockPanel VerticalAlignment="Top" LastChildFill="False" Height="30" Background="#FFF0F0F0">
-            <Menu DockPanel.Dock="Top" Height="20">
+        <DockPanel LastChildFill="True" Background="#FFF0F0F0">
+            <Menu DockPanel.Dock="Top" Height="20" Margin="0,0,0,10">
                 <MenuItem Header="File">
                     <MenuItem Header="Open" Command="{Binding Path=AddFileCommand}"/>
                 </MenuItem>
             </Menu>
+            <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="100" Background="White">
+                <TextBlock HorizontalAlignment="Center" Height="20" Text="Tags"/>
+                <ListBox DockPanel.Dock="Left" ItemsSource="{Binding Path=AllTags}" Width="90" SelectionMode="Multiple">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <ListView DockPanel.Dock="Right" ItemsSource="{Binding Path=Treatises}" VerticalAlignment="Top" SelectedItem="{Binding Path=SelectedItem}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=Title}"/>
+                        <GridViewColumn Header="Authors" DisplayMemberBinding="{Binding Path=DisplayAuthorString}"/>
+                        <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Path=DisplayTagString}"/>
+                        <GridViewColumn Header="FilePath" DisplayMemberBinding="{Binding Path=FilePath}"/>
+                    </GridView>
+                </ListView.View>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding Path=SelectedItem}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Tag" Value="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <ContextMenu DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+                                    <MenuItem Header="Open" Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                                    <MenuItem Header="Edit" Command="{Binding Path=EditItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                                    <MenuItem Header="Delete" Command="{Binding Path=DeleteItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
+                                </ContextMenu>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </DockPanel>
-        <ListView ItemsSource="{Binding Path=Treatises}" VerticalAlignment="Top" Margin="0,30,0,0" SelectedItem="{Binding Path=SelectedItem}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=Title}"/>
-                    <GridViewColumn Header="Authors" DisplayMemberBinding="{Binding Path=DisplayAuthorString}"/>
-                    <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Path=DisplayTagString}"/>
-                    <GridViewColumn Header="FilePath" DisplayMemberBinding="{Binding Path=FilePath}"/>
-                </GridView>
-            </ListView.View>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding Path=SelectedItem}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="Tag" Value="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ListView}}" />
-                    <Setter Property="ContextMenu">
-                        <Setter.Value>
-                            <ContextMenu DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
-                                <MenuItem Header="Open" Command="{Binding Path=OpenFileCommand}" CommandParameter="{Binding Path=SelectedItem}" />
-                                <MenuItem Header="Edit" Command="{Binding Path=EditItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
-                                <MenuItem Header="Delete" Command="{Binding Path=DeleteItemCommand}" CommandParameter="{Binding Path=SelectedItem}" />
-                            </ContextMenu>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
-
     </Grid>
 </Window>
