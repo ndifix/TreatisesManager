@@ -111,15 +111,22 @@
     <Compile Include="Command\MainWindow\DeleteItemCommand.cs" />
     <Compile Include="Command\MainWindow\EditItemCommand.cs" />
     <Compile Include="Command\MainWindow\OpenFileCommand.cs" />
+    <Compile Include="Command\TagEditor\AppendTagCommand.cs" />
+    <Compile Include="Command\TagEditor\RemoveTagCommand.cs" />
     <Compile Include="Command\TreatiseForm\ChangeFilePathCommand.cs" />
     <Compile Include="Command\TreatiseForm\ClosingWindowCommand.cs" />
     <Compile Include="Command\TreatiseForm\EditAuthorsCommand.cs" />
+    <Compile Include="Command\TreatiseForm\EditTagsCommand.cs" />
     <Compile Include="Model\ConfirmForm.cs" />
     <Compile Include="Model\TreatiseCache.cs" />
     <Compile Include="ViewModel\AuthorEditorViewModel.cs" />
+    <Compile Include="ViewModel\TagEditorViewModel.cs" />
     <Compile Include="ViewModel\TreatiseFormViewModel.cs" />
     <Compile Include="View\AuthorEditor.xaml.cs">
       <DependentUpon>AuthorEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TagEditor.xaml.cs">
+      <DependentUpon>TagEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TreatiseForm.xaml.cs">
       <DependentUpon>TreatiseForm.xaml</DependentUpon>
@@ -144,6 +151,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\TagEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TreatiseForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

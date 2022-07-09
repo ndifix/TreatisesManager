@@ -26,7 +26,8 @@
             </DockPanel>
             <DockPanel LastChildFill="True" Margin="0,0,0,20" MinHeight="20">
                 <TextBlock DockPanel.Dock="Left" VerticalAlignment="Top" Height="20" Width="50" Text="Tags:"/>
-                <TextBlock DockPanel.Dock="Left" Margin="20,0,0,0" Text="{Binding Path=TagList}"/>
+                <Button DockPanel.Dock="Right" VerticalAlignment="Top" Height="20" Width="50" Content="Edit" Command="{Binding Path=EditTagsCommand}"/>
+                <TextBlock DockPanel.Dock="Left" Margin="20,0,10,0" Text="{Binding Path=TagList}"/>
             </DockPanel>
             <DockPanel LastChildFill="True" Margin="0,0,0,20" MinHeight="20">
                 <TextBlock DockPanel.Dock="Left" VerticalAlignment="Top" Height="20" Width="50" Text="Authors:"/>

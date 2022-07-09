@@ -41,12 +41,15 @@ namespace TreatisesManager.ViewModel
 
 		public ICommand EditAuthorsCommand { get; }
 
+		public ICommand EditTagsCommand { get; }
+
 		public TreatiseFormViewModel(Treatise treatise, TreatiseForm form)
 		{
 			treatiseBuffer = treatise;
 			ClosingWindowCommand = new ClosingWindowCommand(form);
 			ChangeFilePathCommand = new ChangeFilePathCommand(this);
 			EditAuthorsCommand = new EditAuthorsCommand(this);
+			EditTagsCommand = new EditTagsCommand(this);
 		}
 
 		protected void OnPropertyChanged([CallerMemberName] string name = null)
